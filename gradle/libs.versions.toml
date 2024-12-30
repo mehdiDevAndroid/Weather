@@ -15,6 +15,7 @@ retrofit = "2.10.0"
 interceptor =  "4.10.0"
 okHttpCookies =  "4.9.1"
 room = "2.6.1"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,10 +34,10 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref="interceptor" }
 okHttpCookies = { group = "com.squareup.okhttp3", name = "okhttp-urlconnection", version.ref="okHttpCookies" }
-roomCommon = { group = "androidx.room", name = "room-common", version.ref="room" }
 roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref="room" }
 roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref="room" }
 roomExtension = { group = "androidx.room", name = "room-ktx", version.ref="room" }
+swiperefreshlayout = { group = "androidx.swiperefreshlayout", name ="swiperefreshlayout", version.ref="swiperefreshlayout"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

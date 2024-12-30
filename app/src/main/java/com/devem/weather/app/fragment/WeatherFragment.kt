@@ -42,6 +42,7 @@ class WeatherFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             initLiveData()
             initRecycleView()
+            initRefreshLayout()
 
             viewModel.getWeather()
         }
@@ -58,17 +59,47 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    private fun initRefreshLayout() {
+        _binding.swipeRefreshLayout.setOnRefreshListener {
+            weatherAdapter.apply {
+                data.clear()
+                notifyDataSetChanged()
+            }
+            viewModel.getWeather()
+        }
+    }
+
+
     private fun handleWeather(state: State<ArrayList<WeatherView.Data.Timelines?>>) {
         when (state) {
             is State.Success -> {
-                logInfo("Weather DATA: ${state.data}")
-                state.data?.getOrNull(0)?.let { weatherAdapter.updateItems(it.intervals) }
+                handleSuccess(state.data)
             }
 
             is State.Error -> {
-                logError("Weather DATA: ${state.message}")
+                handleError(state.message)
             }
-            else -> {}
+
+            else -> {
+            }
         }
+
+    }
+
+    private fun handleSuccess(response: ArrayList<WeatherView.Data.Timelines?>?) {
+        _binding.swipeRefreshLayout.isRefreshing = false
+        weatherAdapter.data.clear()
+        logInfo("Weather DATA: $response")
+        response?.getOrNull(0)?.intervals?.let { intervals ->
+            weatherAdapter.apply {
+                data.addAll(intervals)
+                notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun handleError(message: String?) {
+        _binding.swipeRefreshLayout.isRefreshing = false
+        logError("Weather DATA: $message")
     }
 }

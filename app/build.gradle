@@ -73,8 +73,12 @@ dependencies {
     implementation(libs.okHttpCookies)
 
     // Room dependencies
-    implementation(libs.roomCommon)
-    implementation(libs.roomCompiler)
-    implementation(libs.roomExtension)
     implementation(libs.roomRuntime)
+    annotationProcessor(libs.roomCompiler)
+    kapt(libs.roomCompiler)
+    implementation(libs.roomExtension)
+
+    //RefreshLayout
+    implementation(libs.swiperefreshlayout)
+
 }
