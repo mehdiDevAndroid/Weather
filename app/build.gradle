@@ -33,6 +33,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        buildConfig true
+        viewBinding true
+        dataBinding true
+    }
+    buildTypes.each {
+        it.buildConfigField("String", "BASE_URL",  "${BASE_URL}")
+    }
+}
+
+kapt {
+    correctErrorTypes = true // Enables error correction for annotation processors
 }
 
 dependencies {
