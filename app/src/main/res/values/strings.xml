@@ -3,4 +3,7 @@
 
     <string name="message_internet_problem">Il semble que vous n\'êtes pas connecté, veuillez vérifier votre connexion internet puis réessayez !</string>
     <string name="message_server_problem">Un problème technique est survenu, veuillez réessayer !</string>
+    <string name="label_speed">Vitesse du vent</string>
+    <string name="label_temperature">Température</string>
+    <string name="label_temperature_apparent">Température apparent</string>
 </resources>
