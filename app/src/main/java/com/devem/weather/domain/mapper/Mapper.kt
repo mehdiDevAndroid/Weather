@@ -2,6 +2,7 @@ package com.devem.weather.domain.mapper
 
 import com.devem.weather.app.view.WeatherView
 import com.devem.weather.data.json.WeatherResponseJson
+import com.devem.weather.data.local.entity.WeatherEntity
 import com.devem.weather.domain.enums.TimeStepTypes
 import javax.inject.Inject
 
@@ -29,6 +30,27 @@ class Mapper @Inject constructor() {
         )
 
     private fun toValues(json: WeatherResponseJson.Data.Timelines.Intervals.Values?) =
+        WeatherView.Data.Timelines.Intervals.Values(
+            precipitationIntensity = json?.precipitationIntensity,
+            precipitationType = json?.precipitationType,
+            windSpeed = json?.windSpeed,
+            windGust = json?.windGust,
+            windDirection = json?.windDirection,
+            temperature = json?.temperature,
+            temperatureApparent = json?.temperatureApparent,
+            cloudCover = json?.cloudCover,
+            cloudBase = json?.cloudBase,
+            cloudCeiling = json?.cloudCeiling,
+            weatherCode = json?.weatherCode,
+        )
+
+    fun toLocalInterval(json: WeatherEntity?) =
+        WeatherView.Data.Timelines.Intervals(
+            startTime = json?.startTime,
+            values = toLocalValues(json)
+        )
+
+    private fun toLocalValues(json: WeatherEntity?) =
         WeatherView.Data.Timelines.Intervals.Values(
             precipitationIntensity = json?.precipitationIntensity,
             precipitationType = json?.precipitationType,

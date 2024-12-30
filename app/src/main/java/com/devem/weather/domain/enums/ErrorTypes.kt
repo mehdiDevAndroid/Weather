@@ -7,7 +7,7 @@ enum class ErrorTypes(
     val httpCode: Int?,
     val message: Int = R.string.message_server_problem
     ){
-    UNAVAILABLE_NETWORK(null ,  R.string.message_internet_problem),
+    UNAVAILABLE_NETWORK(0 ,  R.string.message_internet_problem),
     TECHNICAL(404 ,  R.string.message_server_problem);
 
     companion object {
